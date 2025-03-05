@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="{% static 'css/styleAlunos.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/Logo1.png' %}">
+    <script src="{% static 'js/menu-bar.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <header style="height: 5rem;">
+        <button style="font-size: 2rem; position: relative; margin-bottom: 0rem; left: -1.5rem;" id="menu-toggle" class="hamburguer">&#9776;</button>
+        <img style="width: 4%;" src="{% static 'img/Logo1.png' %}" alt="">
+    </header>
+
+    <!-- Navegação oculta -->
+    <nav id="sidebar">
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon> <a href="{% url 'home' %}"> Dados do Usuário</a></li>
+            <li><ion-icon name="person"></ion-icon> <a href="{% url 'alunos' 1%}">Alunos</a></li>   
+            <li><a href="{% url 'logout' %}" class="btn-logout">Logout</a>  </li>
+        </ul>
+    </nav>
+    <div class="table">
+        <h1>Lista de Alunos</h1>
+
+        <div class="container-series">
+            <a href="{% url 'alunos' 1%}"><button>1º Serie</button></a>
+            <a href="{% url 'alunos' 2%}"><button>2º Serie</button>
+            <a href="{% url 'alunos' 3%}"><button>3º Serie</button>  
+        </div>
+        <a href="{% url 'novo_aluno' %}"><button class="btn"><ion-icon name="person-add-outline"></ion-icon> Adicionar Aluno</button></a>
+        {% if page %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Matricula</th>
+                        <th>Nome</th>
+                        <th>Serie</th>
+                        <th>Data de nascimento</th>
+                        <th>Notas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aluno in page.object_list %}
+                        <tr>
+                            <td> <img src="{{ aluno.foto_perfil.url }}" alt=""> </td>
+                            <td>{{ aluno.matricula }}</td>
+                            <td>{{ aluno.nome }}</td>
+                            <td>{{ aluno.serie }}ª</td>
+                            <td>{{ aluno.data_nascimento | date:"d/m/Y" }}</td>
+                            <td><a href="{% url 'visualizar_notas' aluno.id serie%}"><button><ion-icon name="document-text-outline"></ion-icon></button></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination">
+                {% if page.has_previous %}
+                    <a href="?page=1"><button>Primeira</button></a>
+                    <a href="?page={{ page_obj.previous_page_number }}"><button>Anterior</button></a>
+                {% endif %}
+            
+                {% if page.has_next %}
+                    <a href="?page={{ page.next_page_number }}"><button>Próxima</button></a>
+                    <a href="?page={{ page.paginator.num_pages }}"><button>Última</button></a>
+                {% endif %}
+                <span style="position: relative; font-size: 1.2rem; top: 1.5rem; display: flex; justify-content: center;">Página {{ page.number }} de {{ page.paginator.num_pages }}</span> 
+            </div>
+        {% else %}
+            <p style="color: yellow; font-size: 1.3rem;">Nenhum aluno encontrado.</p>
+        {% endif %}
+        
+    </div>
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

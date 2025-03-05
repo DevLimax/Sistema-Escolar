@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Professor</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styleMain.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Cadastro</h2>
+        <form action="{% url 'professor_register' %}" method="post">
+            {% csrf_token %}
+            {{ forms.as_p }}
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+        <p>Já tem uma conta? <a href="{% url 'professor_login' %}" class="link">Faça login</a></p>
+    </div>
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

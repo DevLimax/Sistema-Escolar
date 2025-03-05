@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styleAlunos.css' %}">
+    <script src="{% static 'js/menu-bar.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{% static  'js/verify-note.js' %}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header style="height: 5rem;">
+        <button style="font-size: 2rem; position: relative; margin-bottom: 0rem; left: -1.5rem;" id="menu-toggle" class="hamburguer">&#9776;</button>
+        <img style="width: 4%;" src="{% static 'img/Logo1.png' %}" alt="">
+    </header>
+
+    <!-- Navegação oculta -->
+    <nav id="sidebar">
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon> <a href="{% url 'home' %}"> Dados do Usuário</a></li>
+            <li><ion-icon name="person"></ion-icon> <a href="{% url 'alunos' 1%}">Alunos</a></li>   
+            <li><a href="{% url 'logout' %}" class="btn-logout">Logout</a>  </li>
+        </ul>
+    </nav>
+    <div class="table">
+        <a href="{% url 'alunos' aluno.serie %}"><button class="btn-back">Voltar</button></a>
+        <h1>Notas do Aluno</h1>
+        {% if query_notas %}
+            {% for notas in query_notas %}
+                {% if notas.bimestre == '1' and notas.semestre == '1' %}
+                    <h3>1º Bimestre</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nota parcial</th>
+                                <th>Nota bimestral</th>
+                                <th>Nota conceito</th>
+                                <th>Nota Extra</th>
+                                <th>Nota final</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nota">{{ notas.notaParcial }}</td>
+                                <td class="nota">{{ notas.notaBimestral }}</td>
+                                <td class="nota">{{ notas.notaConceito }}</td>
+                                <td class="nota">{{ notas.notaExtra }}</td>
+                                <td class="nota">{{ notas.notaFinal }}</td>
+                                <td><a href="{% url 'editar_notas' notas.id aluno.id aluno.serie%}"><button><ion-icon name="create-outline"></ion-icon></button></a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endfor %}
+            {% for notas in query_notas %}
+                {% if notas.bimestre == '2' and notas.semestre == '1' %}
+                    <h3>2º Bimestre</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nota parcial</th>
+                                <th>Nota bimestral</th>
+                                <th>Nota conceito</th>
+                                <th>Nota Extra</th>
+                                <th>Nota final</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nota">{{ notas.notaParcial }}</td>
+                                <td class="nota">{{ notas.notaBimestral }}</td>
+                                <td class="nota">{{ notas.notaConceito }}</td>
+                                <td class="nota">{{ notas.notaExtra }}</td>
+                                <td class="nota">{{ notas.notaFinal }}</td>
+                                <td><a href="{% url 'editar_notas' notas.id aluno.id aluno.serie%}"><button><ion-icon name="create-outline"></ion-icon></button></a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endfor %}
+            {% for notas in query_notas %}
+                {% if notas.bimestre == '3' and notas.semestre == '2' %}
+                    <h3>3º Bimestre</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nota parcial</th>
+                                <th>Nota bimestral</th>
+                                <th>Nota conceito</th>
+                                <th>Nota Extra</th>
+                                <th>Nota final</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nota">{{ notas.notaParcial }}</td>
+                                <td class="nota">{{ notas.notaBimestral }}</td>
+                                <td class="nota">{{ notas.notaConceito }}</td>
+                                <td class="nota">{{ notas.notaExtra }}</td>
+                                <td class="nota">{{ notas.notaFinal }}</td>
+                                <td><a href="{% url 'editar_notas' notas.id aluno.id aluno.serie%}"><button><ion-icon name="create-outline"></ion-icon></button></a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endfor %}
+            {% for notas in query_notas %}
+                {% if notas.bimestre == '4' and notas.semestre == '2' %}
+                    <h3>4º Bimestre</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nota parcial</th>
+                                <th>Nota bimestral</th>
+                                <th>Nota conceito</th>
+                                <th>Nota Extra</th>
+                                <th>Nota final</th>
+                                <th>Editar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="nota">{{ notas.notaParcial }}</td>
+                                <td class="nota">{{ notas.notaBimestral }}</td>
+                                <td class="nota">{{ notas.notaConceito }}</td>
+                                <td class="nota">{{ notas.notaExtra }}</td>
+                                <td class="nota">{{ notas.notaFinal }}</td>
+                                <td><a href="{% url 'editar_notas' notas.id aluno.id aluno.serie%}"><button><ion-icon name="create-outline"></ion-icon></button></a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <h3 class="message-not-notes">Você ainda não adicionou Notas para esse aluno</h3>
+        {% endif %}
+        {% if check_bimestres %}
+            {% if check_result %}
+                <a href="{% url 'resultado' aluno.id %}"><button class="btn-check">Ver Resultado</button></a>
+            {% else %}
+                <a href="{% url 'gerar_resultado' aluno.id %}"><button class="btn-check">Gerar Resultado</button></a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'adicionar_notas' aluno.id aluno.serie %}"><button>Adicionar Nota</button></a>
+        {% endif %}
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

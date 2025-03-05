@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Professor</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/Logo1.png' %}">
+    <script src="{% static 'js/menu-bar.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+</head>
+<body>
+    <!-- Header com botão hambúrguer e logout -->
+    <header style="height: 5rem;">
+        <button style="font-size: 2rem; position: relative; margin-bottom: 0rem; left: -1.5rem;" id="menu-toggle" class="hamburguer">&#9776;</button>
+        <img style="width: 4%;" src="{% static 'img/Logo1.png' %}" alt="">
+    </header>
+
+    <!-- Navegação oculta -->
+    <nav id="sidebar">
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon> <a href="{% url 'home' %}"> Dados do Usuário</a></li>
+            <li><ion-icon name="person"></ion-icon> <a href="{% url 'alunos' 1%}">Alunos</a></li>   
+            <li><a href="{% url 'logout' %}" class="btn-logout">Logout</a>  </li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <div class="info-status">
+            <h3>Seja bem-vindo, {{ user.first_name }}!</h3>
+            <p>Este é o seu painel de controle. Aqui você pode visualizar e editar seus dados, acessar a lista de alunos e adicionar notas.</p>
+        </div>
+        <div class="dados">
+            <h3>Dados do Usuário</h3>
+            <p><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>E-mail:</strong> {{ user.email }}</p>
+            <p><strong>Usuário:</strong> {{ user.username }}</p>    
+            {% if disciplina %}
+                <p><strong>Disciplina:</strong> {{ disciplina }}</p>
+            {% else %}
+                <p><strong>Disciplina:</strong> </p>
+                <a href="{% url 'adicionar_disciplina' %}">
+                    <button class="btn">Adicionar Disciplina</button>   
+                </a>
+            {% endif %} 
+            <img class="foto-perfil" src="{{ user.foto_perfil.url }}" alt="">
+            <a href=""><button>Editar</button></a>
+        </div>    
+    </main>
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

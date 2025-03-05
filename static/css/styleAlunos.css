@@ -1,0 +1,255 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background: #1f1f1f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+footer {
+    width: 100%;
+    height: 100px; /* Aumenta o tamanho da página */
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.hamburguer {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-logout {
+    text-decoration: none;
+    background: #d32f2f;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.btn-logout:hover {
+    background: #9a1f1f;
+}
+
+nav {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: #222;
+    padding-top: 60px;
+    transition: 0.3s;
+}
+
+nav.active {
+    left: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 15px;
+    text-align:left;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.table {
+    position: relative; /* Adicionando posição relativa ao container */
+    margin-top: 2%;
+    background: #1e1e1e;
+    padding: 3rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1400px; /* Aumentando a largura máxima */
+    text-align: center;
+}
+
+.table h3 {
+    margin-bottom: 1.5rem;
+}
+
+.container-series {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 4px;
+}
+
+.container-series button {
+    background-color: transparent;
+    border: 1px solid #388e3c;;
+}
+
+
+button {
+    background: #388e3c;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    margin-bottom: 1rem;
+}
+
+button:hover {
+    background: #2e7d32;
+}
+
+.btn-check {
+    position: absolute; /* Posicionando o botão de forma absoluta */
+    bottom: 0%; /* Ajustando a posição superior */
+    left: 85%; /* Ajustando a posição à esquerda */
+    text-decoration: none;
+    background:  #388e3c;   
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.btn-check:hover {
+    background: #2e7d32;
+}
+
+.btn-back {
+    position: absolute; /* Posicionando o botão de forma absoluta */
+    bottom: 0%; /* Ajustando a posição superior */
+    left: 5%; /* Ajustando a posição à esquerda */
+    text-decoration: none;
+    background: #f70b0b;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.btn-back:hover {
+    background: #6d2020;
+}
+
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    margin-bottom: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    box-shadow: #121212 2px;
+}
+
+th, td {
+    padding: 0.8rem;
+    border: 1px solid #2a2a2a;
+}
+
+th {
+    background: #2a2a2a;
+}
+
+td {
+    background: #1e1e1e;
+}
+
+tr:nth-child(even) td {
+    background: #2a2a2a;
+}
+
+td img {
+    width: 100px; /* Definindo um tamanho padrão para a imagem */
+    height: 100px;
+    border-radius: 5px;
+}
+
+p {
+    margin-top: 1.5rem;
+}
+
+.aluno-dados {
+    background: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    height: 400px;
+}
+
+.aluno-dados h3 {
+    margin-bottom: 1rem;
+}
+
+.aluno-dados p {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.aluno-dados img {
+    display: flex;
+    position: relative;
+    margin-left: 70%;
+    top:-170px;
+    border: 5px solid #1e1e1e;
+}
+
+.foto-perfil {
+    width: 300px; /* Definindo um tamanho padrão para a imagem */
+    height: 300px;
+    border-radius: 5px;
+}
+
+.professor-dados {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    height: 0px;
+}
+
+.professor-dados p{
+    display: flex;
+    position: relative;
+    top: -150px;
+}
+
+.statusApproved {
+    position: relative;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    border-bottom: 2px solid #525050;
+}

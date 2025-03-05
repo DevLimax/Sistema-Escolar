@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Novo Aluno</title>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/Logo1.png' %}">
+</head>
+<body>
+    <div class="container-newAluno">
+        <h1 style="margin-bottom: 2rem;">Adicionar Novo Aluno</h1>
+        <form action="{% url 'novo_aluno' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="foto_perfil">Foto de Perfil:</label>
+                {{ forms.foto_perfil }}
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                {{ forms.nome }}
+            </div>
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                {{ forms.data_nascimento }}
+            </div>
+            <div class="form-group">
+                <label for="serie">Série:</label>
+                {{ forms.serie }}
+            </div>
+            <button type="submit" class="btn">Adicionar Aluno</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

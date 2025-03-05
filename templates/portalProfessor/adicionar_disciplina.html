@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/styleMain.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="form-style">
+        <form action="{% url 'adicionar_disciplina' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ forms.nome }}
+            </div>
+            <div class="for-group">
+                {{ forms.carga_horaria }}
+            </div>
+            <button type="submit" style="margin-top: 40px;; ">Adicionar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Usuário</title>
+    <link rel="stylesheet" href="{% static 'css/styleMain.css' %}">
+</head>
+<body>
+    <div class="container-index ">
+        <h1>Bem-vindo ao Portal</h1>
+        <p>Você é:</p>
+        <div class="buttons">
+            <a href="" class="btn aluno">Aluno</a>
+            <a href="{% url 'professor_login' %}" class="btn professor">Professor</a>
+        </div>
+    </div>
+</body>
+</html>

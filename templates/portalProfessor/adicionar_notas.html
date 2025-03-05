@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Notas</title>
+    <link rel="stylesheet" href="{% static 'css/styleMain.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <header style="height: 5rem;">
+        <button style="font-size: 2rem; position: relative; margin-bottom: 0rem; left: -1.5rem;" id="menu-toggle" class="hamburguer">&#9776;</button>
+        <img style="width: 4%;" src="{% static 'img/Logo1.png' %}" alt="">
+    </header>
+
+    <!-- Navegação oculta -->
+    <nav id="sidebar">
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon> <a href="{% url 'home' %}"> Dados do Usuário</a></li>
+            <li><ion-icon name="person"></ion-icon> <a href="{% url 'alunos' 1%}">Alunos</a></li>   
+            <li><a href="{% url 'logout' %}" class="btn-logout">Logout</a>  </li>
+        </ul>
+    </nav>
+
+    <div class="addNotas  ">
+        <h1>Adicionar Notas</h1>
+        <form action="{% url 'adicionar_notas' aluno.id serie %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="bimestre">Bimestre:</label>
+                {{ forms.bimestre }}
+            </div>
+            <div class="form-group">
+                <label for="notaParcial">Nota Parcial:</label>
+                {{ forms.notaParcial }}
+            </div>
+            <div class="form-group">
+                <label for="notaBimestral">Nota Bimestral:</label>
+                {{ forms.notaBimestral }}
+            </div>
+            <div class="form-group">
+                <label for="notaConceito">Nota Conceito:</label>
+                {{ forms.notaConceito }}
+            </div>
+            <button type="submit" class="btn">Adicionar Nota</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/menu-bar.js' %}"></script>
+
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styleAlunos.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{% static 'js/menu-bar.js' %}"></script>
+    <script src="{% static  'js/verify-note.js' %}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header style="height: 5rem;">
+        <button style="font-size: 2rem; position: relative; margin-bottom: 0rem; left: -1.5rem;" id="menu-toggle" class="hamburguer">&#9776;</button>
+        <img style="width: 4%;" src="{% static 'img/Logo1.png' %}" alt="">
+    </header>
+
+    <!-- Navegação oculta -->
+    <nav id="sidebar">
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon> <a href="{% url 'home' %}"> Dados do Usuário</a></li>
+            <li><ion-icon name="person"></ion-icon> <a href="{% url 'alunos' 1%}">Alunos</a></li>   
+            <li><a href="{% url 'logout' %}" class="btn-logout">Logout</a>  </li>
+        </ul>
+    </nav>
+
+    <div class="table">
+        <a href="{% url 'visualizar_notas' aluno.id aluno.serie %}"><button class="btn-back">Voltar</button></a>
+        <div class="aluno-dados">
+            <p><strong>Nome do aluno </strong>:  {{ aluno.nome }}</p>
+            <p><strong>Data de nascimento </strong>: {{ aluno.data_nascimento | date:"d/m/Y" }}</p>
+            <p><strong>Serie </strong>: {{ aluno.serie }}º Serie</p>
+            <p><strong>Matricula </strong>:  {{ aluno.matricula }}</p>
+            <img class="foto-perfil" src="{{ aluno.foto_perfil.url }}" alt=""> 
+        </div>
+        <div class="professor-dados">
+            <p><strong>Disciplina</strong>: {{ disciplina.nome }}</p>
+            <p><strong>Professor</strong>: {{disciplina.professor.first_name}} {{ disciplina.professor.last_name }}</p>
+        </div>
+        <h3 style="font-size: 1.5rem;">Notas Bimestrais</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>1º Bimestre</th>
+                    <th>2º Bimestre</th>
+                    <th>3º Bimestre</th>
+                    <th>4º Bimestre</th>
+                    <th>Final</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="nota">{{ resultado.notaBimestre1 }}</td>
+                    <td class="nota">{{ resultado.notaBimestre2 }}</td>
+                    <td class="nota">{{ resultado.notaBimestre3 }}</td>
+                    <td class="nota">{{ resultado.notaBimestre4 }}</td>
+                    <td class="nota">{{ resultado.nota_final_disciplina }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if resultado.is_approved == True%}
+            <h3 class="statusApproved" style="color: green;">Aluno Aprovado</h3>
+        {% else %}
+            <h3 class="statusApproved" style="color: red;">Aluno Reprovado</h3>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Sistema Escolar - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
